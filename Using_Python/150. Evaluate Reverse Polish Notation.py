@@ -22,3 +22,24 @@ class Solution:
                 stack = stack[:-2]
                 stack.append(res)
         return int(res)
+    
+###############################################
+
+# Best solution for the problem on leetcode (not mine)
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        stack = []
+
+        operator = {
+            '+': lambda x, y: y + x,
+            '-': lambda x, y: y - x,
+            '*': lambda x, y: y * x,
+            '/': lambda x, y: int(y/x)
+        }
+        for x in tokens:
+            if x not in operator:
+                stack.append(int(x))
+            else:
+                stack.append(operator[x](stack.pop(), stack.pop()))
+                
+        return int(stack[0])
