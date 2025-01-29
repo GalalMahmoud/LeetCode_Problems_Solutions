@@ -21,3 +21,21 @@ class Solution:
         return res
     
 
+# أسرع حل للمسألة
+# Fastest solution for the problem
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        from collections import Counter
+
+        cntr = Counter(nums)
+        tuple_list = []
+        output = []
+        for key,value in cntr.items():
+            tuple_list.append((key,value))
+
+        tuple_list.sort(key=lambda x:x[1],reverse = True)
+
+        for key,value in tuple_list[:k]:
+            output.append(key)
+
+        return output
